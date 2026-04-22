@@ -61,30 +61,30 @@ MathJax = {
 <h2 id="stage1">Stage 1: Analyzing a not-so-obfuscated HTM file</h2>
 <p>The first stage stargs with a simple <code>.HTM</code> file</p>
 <p>When we open up the file we can see that it's not heavily obfuscated, it bascially obfuscate the payload by adding a bunch of words between the characters</p>
-
-  <p><img src="/images/remcos_re/sample1.png" alt=""></p>
-
-  <p>so we gonna start by removing the substrings <code>sylph</code> and <code>riatas</code> from this <code>portiones</code> variable.</p>
-  <p><img src="/images/remcos_re/sample2.png" alt="">
-
-  <p>now we have just a hex encoded string</p>
-  <p><img src="/images/remcos_re/sample3.png" alt=""></p>
-
-  <p>looking a litte bit further we can see the word <code>riatas</code> being used almost on the entire code, so we gonna remove it</p>
-  <p><img src="/images/remcos_re/sample4.png" alt=""></p>
-
-  <p>and finally now we have a more readable code, now we can see what the code really does, it first add the hex encoded string into a variable called <code>INTERNAL_DB_CACHE</code> and add it to the Environment path, by using a powershell command, after that it add this powershell command to a startup via <code>WMI</code>.</p>
-  <p><img src="/images/remcos_re/sample5.png" alt=""></p>
-
-  <h2 id="stage2">Stage 2: Decoding the hex encoded payload</h2>
-  <p>To decode that previous mentioned Hex encoded payload, we gonna use a simple python script.</p>
-  <pre tabindex="0"><code>string = "[hex_encoded_string]"
-  string = bytes.fromhex(string).decode('utf-8')
-  print(string)</code></pre>
     
-  </main>
-  <footer>
+<p><img src="/images/remcos_re/sample1.png" alt=""></p>
+
+<p>so we gonna start by removing the substrings <code>sylph</code> and <code>riatas</code> from this <code>portiones</code> variable.</p>
+<p><img src="/images/remcos_re/sample2.png" alt="">
+
+<p>now we have just a hex encoded string</p>
+<p><img src="/images/remcos_re/sample3.png" alt=""></p>
+
+<p>looking a litte bit further we can see the word <code>riatas</code> being used almost on the entire code, so we gonna remove it</p>
+<p><img src="/images/remcos_re/sample4.png" alt=""></p>
+
+<p>and finally now we have a more readable code, now we can see what the code really does, it first add the hex encoded string into a variable called <code>INTERNAL_DB_CACHE</code> and add it to the Environment path, by using a powershell command, after that it add this powershell command to a startup via <code>WMI</code>.</p>
+<p><img src="/images/remcos_re/sample5.png" alt=""></p>
+
+<h2 id="stage2">Stage 2: Decoding the hex encoded payload</h2>
+<p>To decode that previous mentioned Hex encoded payload, we gonna use a simple python script.</p>
+<pre tabindex="0"><code>string = "[hex_encoded_string]"
+string = bytes.fromhex(string).decode('utf-8')
+print(string)</code></pre>
     
-  </footer>
+</main>
+<footer>
+    
+</footer>
 </body>
 </html>
