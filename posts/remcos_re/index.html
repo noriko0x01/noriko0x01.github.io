@@ -54,10 +54,11 @@ MathJax = {
       </div>
     
     <h1>Remcos: reverse engineering </h1>
-    
+
 <h2 id="information">Information</h2>
 <p>Recently i started to reverse engineering a remcos, Remcos Windows remote access trojan (RAT) it was sold as a legitimate tool, but now is being used for cybercriminals.</p>
-    
+
+<br>
 <h2 id="stage1">Stage 1: Analyzing a not-so-obfuscated HTM file</h2>
 <p>The first stage stargs with a simple <code>.HTM</code> file</p>
 <p>When we open up the file we can see that it's not heavily obfuscated, it bascially obfuscate the payload by adding a bunch of words between the characters</p>
@@ -76,11 +77,21 @@ MathJax = {
 <p>and finally now we have a more readable code, now we can see what the code really does, it first add the hex encoded string into a variable called <code>INTERNAL_DB_CACHE</code> and add it to the Environment path, by using a powershell command, after that it add this powershell command to a startup via <code>WMI</code>.</p>
 <p><img src="/images/remcos_re/sample5.png" alt=""></p>
 
+<br>
 <h2 id="stage2">Stage 2: Decoding the hex encoded payload</h2>
 <p>To decode that previous mentioned Hex encoded payload, we gonna use a simple python script.</p>
 <pre tabindex="0"><code>string = "[hex_encoded_string]"
 string = bytes.fromhex(string).decode('utf-8')
 print(string)</code></pre>
+
+<div class="highlight">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<code class="language-python" data-lang="py">
+<span style="display:flex;"><span>string = "[hex_encoded_string]"</span>
+<span style="display:flex;"><span>string = <span style="color:#81a1c1;font-weight:bold">bytes</span>.<span style="color:#81a1c1;font-weight:bold">fromhex(string)</span>.<span style="color:#81a1c1;font-weight:bold">decode</span>(<span style="color:#eceff4">'utf-8'</span>)
+</span></span>
+</code></pre></div>
+    
 <p><img src="/images/remcos_re/sample6.png" alt=""></p>
     
 <hr>
