@@ -56,15 +56,16 @@ MathJax = {
     <h1>Remcos: reverse engineering </h1>
     
 <h2 id="information">Information</h2>
-<p>how the remcos work, or almost...</p>
+<p>Recently i started to reverse engineering a remcos, Remcos Windows remote access trojan (RAT) it was sold as a legitimate tool, but now is being used for cybercriminals.</p>
     
 <h2 id="stage1">Stage 1: Analyzing a not-so-obfuscated HTM file</h2>
 <p>The first stage stargs with a simple <code>.HTM</code> file</p>
-<p>When we open up the file we can see that it's not heavily obfuscated, it bascially obfuscate the payload by adding a bunch of words between the chars</p>
+<p>When we open up the file we can see that it's not heavily obfuscated, it bascially obfuscate the payload by adding a bunch of words between the characters</p>
 
   <p><img src="/images/remcos_re/sample1.png" alt=""></p>
 
-  <p>sample2 file</p>
+  <p>
+  <p>so we gonna start by removing the substrings <code>sylph</code> from this <code>portiones</code> variable</p>
   <p><img src="/images/remcos_re/sample2.png" alt=""></p>
 
     
